@@ -5,7 +5,7 @@ import {
   Grid2X2,
   Headphones,
   Heart,
-  Home,
+  Home as HomeIcon,
   Menu,
   Percent,
   Search,
@@ -153,7 +153,7 @@ export default function Home() {
       </footer>
 
       <nav className="sm-bottom" aria-label="منوی اصلی">
-        <Link className="active" href="/"><Home /><span>خانه</span></Link>
+        <Link className="active" href="/"><HomeIcon /><span>خانه</span></Link>
         <Link href="/category/sale"><Percent /><span>پیشنهادها</span></Link>
         <Link href="/category/clippers"><Grid2X2 /><span>دسته‌بندی‌ها</span></Link>
         <Link href="/account/favorites"><Heart /><span>علاقه‌مندی</span></Link>
