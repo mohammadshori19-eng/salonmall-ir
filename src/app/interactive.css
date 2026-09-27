@@ -1,0 +1,62 @@
+/* SalonMall interactive controls */
+.sm-search input{flex:1;border:0;outline:0;background:transparent;text-align:right;direction:rtl;padding:0 18px;font-size:15px;min-width:0}
+.sm-search input::placeholder{color:#777}
+.sm-search button{border:0;cursor:pointer}
+.sm-drawerBackdrop{position:fixed;z-index:90;inset:0;border:0;background:#0008}
+.sm-drawer{position:fixed;z-index:100;top:0;right:0;width:min(330px,86vw);height:100dvh;background:#fff;color:#111;padding:25px 20px;box-shadow:-15px 0 40px #0003;direction:rtl}
+.sm-drawer .sm-brand{color:#111;justify-content:flex-start;margin:35px 0 25px;font-size:24px}
+.sm-drawer .sm-brand small{color:#555}
+.sm-drawerClose{position:absolute;left:15px;top:15px;border:0;background:#f3f5f4;width:38px;height:38px;border-radius:50%;display:grid;place-items:center}
+.sm-drawer nav{display:grid;border-top:1px solid #eee}
+.sm-drawer nav a{padding:15px 4px;border-bottom:1px solid #eee;font-size:13px}
+.sm-heart.isFavorite,.heartButton.isFavorite,.detailHeart.isFavorite{color:#e53149}
+.innerCart{position:relative;display:grid;place-items:center}
+.innerCart>span{position:absolute;top:-7px;left:-8px;min-width:18px;height:18px;padding:0 4px;border-radius:10px;background:var(--green);color:#fff;font-size:9px;display:grid;place-items:center}
+.filterChips button{white-space:nowrap;border:0;background:#f4f6f5;padding:9px 14px;border-radius:20px;font-size:11px;cursor:pointer}
+.filterChips button.active{background:var(--green);color:#fff}
+.activeFilter{border-color:var(--green)!important;color:var(--green)}
+.filterPanel{margin:0 5vw 15px;padding:14px;border:1px solid var(--line);border-radius:10px;background:#fafbfa;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.filterPanel label{display:grid;gap:7px;font-size:10px;min-width:220px}
+.filterPanel input[type="range"]{accent-color:var(--green)}
+.filterPanel .filterCheck{display:flex;align-items:center;gap:7px;min-width:auto}
+.filterPanel button{border:0;background:#fff;border:1px solid var(--line);border-radius:7px;padding:9px 12px;font-size:10px}
+.heartButton{border:0;background:transparent;z-index:3;cursor:pointer;padding:0}
+.cartButton{border:0;cursor:pointer}
+.shopToast{position:fixed;z-index:120;left:50%;bottom:92px;transform:translateX(-50%);background:#0b1714;color:#fff;border-radius:22px;padding:10px 18px;font-size:11px;box-shadow:0 8px 30px #0003}
+.detailHeart{position:absolute;top:18px;left:18px;border:0;background:#fff;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;box-shadow:0 4px 18px #0001;z-index:2}
+.primaryBuyButton{margin-top:22px;border:0;background:var(--green);color:#fff;border-radius:8px;padding:13px 18px;display:flex;align-items:center;gap:8px;cursor:pointer}
+.offer button{background:var(--green);color:#fff;border:0;border-radius:7px;padding:11px;text-align:center;font-size:11px;cursor:pointer}
+.miniProductImage{overflow:hidden;background:#fff}
+.miniProductImage img{width:100%;height:100%;object-fit:contain}
+.trashButton{position:absolute;left:15px;bottom:15px;border:0;background:transparent;color:#d33;cursor:pointer;padding:0}
+.trashButton svg{width:19px;height:19px}
+.emptyCart,.emptyState{margin:35px auto;max-width:560px;padding:38px 25px;border:1px dashed #cfd8d4;border-radius:14px;text-align:center;background:#fafcfa}
+.emptyCart p,.emptyState p{color:#707976}
+.emptyCart a,.emptyState a{display:inline-block;margin-top:10px;background:var(--green);color:#fff;padding:11px 16px;border-radius:7px;font-size:11px}
+.checkoutError{background:#fff1f2;color:#b42335;border:1px solid #ffd3d8;border-radius:7px;padding:9px;margin:10px 0;font-size:10px;line-height:1.8}
+.searchPage,.favoritesPage{padding:25px 5vw 60px}
+.functionalSearch{max-width:760px;display:flex;gap:8px;margin:18px 0 10px}
+.functionalSearch input{flex:1;border:1px solid var(--line);border-radius:8px;padding:12px;outline:none}
+.functionalSearch button{border:0;background:var(--green);color:#fff;border-radius:8px;padding:0 16px;display:flex;align-items:center;gap:6px}
+.searchSummary{color:#6d7470;font-size:11px;margin:18px 0}
+.searchGrid,.favoritesGrid{padding:0}
+.paymentPage{padding:25px 5vw 60px}
+.paymentCard{max-width:620px;margin:25px auto;border:1px solid var(--line);border-radius:16px;padding:32px;text-align:center;box-shadow:0 12px 40px #0000000d}
+.paymentIcon{width:65px;height:65px;margin:auto;border-radius:18px;background:#eaf6f2;color:var(--green);display:grid;place-items:center}
+.paymentIcon svg{width:32px;height:32px}
+.paymentCard p{font-size:13px}
+.paymentNotice{margin:22px 0;background:#fff8e5;border:1px solid #f0dc9d;border-radius:10px;padding:14px;line-height:2;font-size:11px;color:#6d5a1f}
+.paymentSecure{display:flex;align-items:center;justify-content:center;gap:6px;color:#68716d;font-size:10px}
+.paymentSecure svg{width:17px}
+.paymentBack{display:inline-block;margin-top:20px;color:var(--green);font-size:11px}
+@media(max-width:800px){
+  .sm-search input{font-size:10px;padding:0 8px}
+  .filterPanel{margin:0 14px 12px;display:block}
+  .filterPanel label{min-width:0;margin-bottom:12px}
+  .filterChips button{font-size:10px}
+  .offer button{grid-column:3;grid-row:1/3}
+  .searchPage,.favoritesPage,.paymentPage{padding:18px 14px 45px}
+  .functionalSearch{display:grid;grid-template-columns:1fr auto}
+  .functionalSearch button{padding:0 12px}
+  .paymentCard{padding:24px 18px}
+}

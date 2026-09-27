@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { FormEvent, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import {
   BadgePercent,
   Camera,
@@ -13,7 +17,10 @@ import {
   ShoppingCart,
   Truck,
   UserRound,
+  X,
 } from "lucide-react";
+import { products } from "../lib/catalog";
+import { cartCount, readFavorites, toggleFavorite } from "../lib/shop-store";
 import "./home.css";
 
 const categories = [
@@ -28,30 +35,10 @@ const categories = [
 ] as const;
 
 const offers = [
-  {
-    off: "-۲۰٪",
-    image: "https://hairwaysdirect.com/cdn/shop/files/Master.png?v=1719314606",
-    name: "ماشین اصلاح حرفه‌ای",
-    href: "/product/professional-clipper",
-  },
-  {
-    off: "-۱۵٪",
-    image: "https://images.prom.ua/5457361709_w1280_h640_5457361709.jpg",
-    name: "سشوار حرفه‌ای سالن",
-    href: "/product/professional-dryer",
-  },
-  {
-    off: "-۱۲٪",
-    image: "https://wedoskin.ca/cdn/shop/files/SACHAJUANHairWax75ml.png?v=1740083846",
-    name: "محصول مراقبت مو",
-    href: "/product/hair-wax",
-  },
-  {
-    off: "-۱۸٪",
-    image: "https://k5-international.eu/cdn/shop/products/TijerasSuperCutSarrated_2.jpg?v=1600243540",
-    name: "قیچی حرفه‌ای",
-    href: "/product/professional-scissors",
-  },
+  { off: "-۲۰٪", id: "professional-clipper" },
+  { off: "-۱۵٪", id: "professional-dryer" },
+  { off: "-۱۲٪", id: "hair-wax" },
+  { off: "-۱۸٪", id: "professional-scissors" },
 ] as const;
 
 function Brand() {
@@ -64,24 +51,75 @@ function Brand() {
 }
 
 export default function Home() {
+  const router = useRouter();
+  const [query, setQuery] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [favorites, setFavorites] = useState<string[]>([]);
+  const [count, setCount] = useState(0);
+
+  const refresh = () => {
+    setFavorites(readFavorites());
+    setCount(cartCount());
+  };
+
+  useEffect(() => {
+    refresh();
+    window.addEventListener("salonmall:cart", refresh);
+    window.addEventListener("salonmall:favorites", refresh);
+    return () => {
+      window.removeEventListener("salonmall:cart", refresh);
+      window.removeEventListener("salonmall:favorites", refresh);
+    };
+  }, []);
+
+  function submitSearch(e: FormEvent) {
+    e.preventDefault();
+    const q = query.trim();
+    if (q) router.push("/search?q=" + encodeURIComponent(q));
+  }
+
   return (
     <main className="sm-home">
       <section className="sm-hero">
         <header className="sm-top">
           <div className="sm-bar">
             <Link href="/cart" className="sm-cart" aria-label="سبد خرید">
-              <ShoppingCart /><span>۲</span>
+              <ShoppingCart />{count > 0 && <span>{count}</span>}
             </Link>
             <Brand />
-            <button className="sm-menu" aria-label="منو"><Menu /></button>
+            <button type="button" className="sm-menu" aria-label="منو" onClick={() => setMenuOpen(true)}><Menu /></button>
           </div>
 
-          <div className="sm-search">
+          <form className="sm-search" onSubmit={submitSearch}>
             <Link href="/visual-search" className="sm-cam" aria-label="جستجو با تصویر"><Camera /></Link>
-            <span>جستجوی محصول، برند یا دسته‌بندی ...</span>
-            <Link href="/category/clippers" className="sm-go" aria-label="جستجو"><Search /></Link>
-          </div>
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="جستجوی محصول، برند یا دسته‌بندی ..."
+              aria-label="جستجوی محصولات"
+            />
+            <button type="submit" className="sm-go" aria-label="جستجو"><Search /></button>
+          </form>
         </header>
+
+        {menuOpen && (
+          <>
+            <button className="sm-drawerBackdrop" aria-label="بستن منو" onClick={() => setMenuOpen(false)} />
+            <aside className="sm-drawer" aria-label="منوی سایت">
+              <button className="sm-drawerClose" type="button" onClick={() => setMenuOpen(false)}><X /></button>
+              <Brand />
+              <nav>
+                <Link href="/" onClick={() => setMenuOpen(false)}>خانه</Link>
+                <Link href="/category/clippers" onClick={() => setMenuOpen(false)}>دسته‌بندی محصولات</Link>
+                <Link href="/category/sale" onClick={() => setMenuOpen(false)}>پیشنهادهای ویژه</Link>
+                <Link href="/account/favorites" onClick={() => setMenuOpen(false)}>علاقه‌مندی‌ها</Link>
+                <Link href="/cart" onClick={() => setMenuOpen(false)}>سبد خرید</Link>
+                <Link href="/login" onClick={() => setMenuOpen(false)}>ورود / پنل کاربری</Link>
+                <Link href="/seller/register" onClick={() => setMenuOpen(false)}>فروشنده شوید</Link>
+              </nav>
+            </aside>
+          </>
+        )}
 
         <div className="sm-hero-copy">
           <div className="sm-kicker">کیفیت حرفه‌ای، انتخاب حرفه‌ای‌تر</div>
@@ -129,16 +167,27 @@ export default function Home() {
           <Link href="/category/sale">← مشاهده همه</Link>
         </div>
         <div className="sm-products">
-          {offers.map((item) => (
-            <article className="sm-card" key={item.href}>
-              <span className="sm-off">{item.off}</span>
-              <button className="sm-heart" aria-label="افزودن به علاقه‌مندی"><Heart /></button>
-              <Link href={item.href}>
-                <div className="sm-pic"><img src={item.image} alt={item.name} /></div>
-                <h3>{item.name}</h3>
-              </Link>
-            </article>
-          ))}
+          {offers.map((item) => {
+            const product = products.find((p) => p.id === item.id)!;
+            const active = favorites.includes(product.id);
+            return (
+              <article className="sm-card" key={product.id}>
+                <span className="sm-off">{item.off}</span>
+                <button
+                  type="button"
+                  className={"sm-heart " + (active ? "isFavorite" : "")}
+                  aria-label="افزودن به علاقه‌مندی"
+                  onClick={() => setFavorites(toggleFavorite(product.id))}
+                >
+                  <Heart fill={active ? "currentColor" : "none"} />
+                </button>
+                <Link href={"/product/" + product.id}>
+                  <div className="sm-pic"><img src={product.image} alt={product.name} /></div>
+                  <h3>{product.name}</h3>
+                </Link>
+              </article>
+            );
+          })}
         </div>
       </section>
 
