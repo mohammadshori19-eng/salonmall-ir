@@ -1,97 +1,47 @@
-import { Camera, Search, ShoppingCart, Store, ShieldCheck, Truck, BadgeCheck } from "lucide-react";
+import { Camera, Search, ShoppingCart, Menu, User, Heart, Home, Grid2X2, Package, ShieldCheck, Truck, Headphones, BadgeCheck, Store } from "lucide-react";
 
 const categories = [
-  "ماشین اصلاح", "قیچی و تیغ", "محصولات مو", "مراقبت پوست",
-  "ناخن", "پیش‌بند و پوشاک", "تجهیزات سالن", "مصرفی و یکبارمصرف"
+  ["▰","ماشین اصلاح"],["✂","قیچی و ابزار"],["▥","محصولات مو"],["◉","محصولات پوستی"],
+  ["●","رنگ و دکلره"],["▣","تجهیزات سالن"],["▤","یکبار مصرف"],["▦","مبلمان و دکور"],["▧","تجهیزات جانبی"],["٪","فروش ویژه"]
 ];
-
 const products = [
-  {name:"ماشین اصلاح حرفه‌ای", brand:"Wahl", price:"۴,۸۵۰,۰۰۰"},
-  {name:"سشوار حرفه‌ای", brand:"BaBylissPRO", price:"۳,۹۸۰,۰۰۰"},
-  {name:"واکس مو حرفه‌ای", brand:"Professional", price:"۴۹۰,۰۰۰"},
-  {name:"قیچی حرفه‌ای", brand:"Jaguar", price:"۲,۸۵۰,۰۰۰"}
+  ["CLIP","Wahl Magic Clip","ماشین اصلاح حرفه‌ای","۴,۸۵۰,۰۰۰","۲۰٪"],
+  ["DRY","BaByliss","سشوار حرفه‌ای","۲,۹۸۰,۰۰۰","۱۵٪"],
+  ["WAX","Professional","واکس مو","۴۹۰,۰۰۰","۱۰٪"],
+  ["✂","Jaguar","قیچی حرفه‌ای","۲,۸۵۰,۰۰۰","۱۸٪"],
+  ["SPRAY","Schwarzkopf","اسپری مو","۵۸۵,۰۰۰","۱۲٪"]
 ];
 
-export default function Home() {
-  return (
-    <main>
-      <header className="top">
-        <div className="brand"><span className="mark">S</span><b>Salon<span>Mall</span></b></div>
-        <div className="search">
-          <Search size={20}/>
-          <input aria-label="جستجو" placeholder="جستجوی محصول، برند یا فروشگاه..." />
-          <button aria-label="جستجوی تصویری" title="جستجو با عکس"><Camera size={21}/></button>
-        </div>
-        <div className="actions"><span>ورود / ثبت‌نام</span><ShoppingCart/></div>
-      </header>
+export default function Home(){
+ return <main>
+  <div className="utility"><span>ورود / ثبت‌نام</span><div><span>فروشنده حرفه‌ای هستید؟</span><span>پیگیری سفارش</span><span>فروشنده شوید</span></div></div>
+  <header className="mainHeader">
+    <button className="mobileMenu"><Menu/></button>
+    <div className="brand"><span className="logoS">S</span><div><b>Salon<span>Mall</span></b><small>مرکز خرید تخصصی لوازم آرایشگاهی</small></div></div>
+    <div className="search"><Search size={20}/><input placeholder="جستجوی محصول، برند یا دسته‌بندی ..."/><button><Camera size={20}/></button></div>
+    <div className="headerLinks"><b>دسته‌بندی‌ها</b><ShoppingCart/><span className="cartCount">۲</span></div>
+  </header>
+  <nav className="nav"><Menu size={18}/><b>همه دسته‌ها</b><span>ماشین اصلاح</span><span>ابزار و قیچی</span><span>محصولات مو</span><span>محصولات پوستی</span><span>رنگ و دکلره</span><span>تجهیزات سالن</span><span>مبلمان و دکور</span><span>یکبار مصرف</span><span className="hot">فروش ویژه</span></nav>
 
-      <nav className="nav">
-        <b>همه دسته‌ها</b><span>ماشین اصلاح</span><span>ابزار و قیچی</span><span>محصولات مو</span>
-        <span>تجهیزات سالن</span><span>برندها</span><span className="sale">فروش ویژه</span>
-      </nav>
+  <section className="hero">
+    <div className="heroCopy"><small>کیفیت. اطمینان. حرفه‌ای‌تر</small><h1>همه چیز برای<br/>یک سالن حرفه‌ای</h1><p>از ماشین اصلاح و قیچی حرفه‌ای تا محصولات مراقبتی و تجهیزات کامل سالن؛ در یک بازار تخصصی.</p><button>مشاهده محصولات ←</button></div>
+    <div className="heroProducts">
+      <div className="clipperShape"><i></i><b>WAHL</b></div><div className="combShape">|||||||||||</div><div className="bottleShape tall">PRO</div><div className="scissorShape">✂</div><div className="jarShape">MATTE<br/>PASTE</div><div className="sprayShape">NISH<br/>MAN</div>
+    </div>
+    <div className="heroBenefits"><div><BadgeCheck/> اصالت کالا<small>از برندهای معتبر</small></div><div><ShieldCheck/> تضمین قیمت<small>مقایسه با انتخاب بهتر</small></div><div><ShieldCheck/> پرداخت امن<small>درگاه مطمئن</small></div><div><Truck/> ارسال سریع<small>به سراسر ایران</small></div><div><Headphones/> پشتیبانی تخصصی<small>قبل و بعد از خرید</small></div></div>
+  </section>
 
-      <section className="hero">
-        <div>
-          <small>کیفیت حرفه‌ای • انتخاب حرفه‌ای‌تر</small>
-          <h1>همه چیز برای<br/>یک سالن حرفه‌ای</h1>
-          <p>محصولات و تجهیزات تخصصی، چند فروشنده برای هر کالا و مقایسه شفاف قیمت.</p>
-          <button className="primary">مشاهده محصولات</button>
-        </div>
-        <div className="heroVisual">
-          <div className="clipper">✂</div>
-          <div className="bottle">PRO</div>
-          <div className="chair">SALON</div>
-        </div>
-      </section>
+  <section className="categoryStrip">{categories.map(([icon,name])=><div key={name}><span>{icon}</span><b>{name}</b></div>)}</section>
 
-      <section className="trust">
-        <div><BadgeCheck/> اصالت کالا</div><div><ShieldCheck/> پرداخت امن</div>
-        <div><Truck/> ارسال فروشندگان</div><div><Store/> فروشندگان معتبر</div>
-      </section>
+  <section className="promoGrid"><article className="promo p1"><div><h3>ماشین‌های اصلاح</h3><p>دقیق، قدرتمند، حرفه‌ای</p><button>مشاهده برندها</button></div><strong>WAHL</strong></article><article className="promo p2"><div><h3>محصولات مراقبت مو</h3><p>از برندهای معتبر جهانی</p><button>مشاهده محصولات</button></div><strong>PRO</strong></article><article className="promo p3"><div><h3>تجهیزات کامل سالن</h3><p>با کیفیت و ماندگار</p><button>مشاهده تجهیزات</button></div><strong>CHAIR</strong></article></section>
 
-      <section className="section">
-        <div className="sectionTitle"><h2>دسته‌بندی محصولات</h2><a>مشاهده همه</a></div>
-        <div className="categories">
-          {categories.map((x,i)=><div className="category" key={x}><span>{["▣","✂","◉","◇","◌","▤","▥","□"][i]}</span><b>{x}</b></div>)}
-        </div>
-      </section>
+  <section className="productsSection"><div className="sectionHead"><h2>پیشنهادهای ویژه</h2><a>مشاهده همه</a></div><div className="productGrid">{products.map(([visual,brand,name,price,off])=><article className="product" key={name}><div className="discount">-{off}</div><Heart className="heart" size={18}/><div className="productImg">{visual}</div><small>{brand}</small><h3>{name}</h3><div className="stars">★★★★★ <span>۴.۸</span></div><b className="price">{price} تومان</b><button className="cartBtn"><ShoppingCart size={17}/></button></article>)}</div></section>
 
-      <section className="promos">
-        <div><h3>ماشین‌های اصلاح حرفه‌ای</h3><p>مقایسه قیمت چند فروشنده</p></div>
-        <div><h3>خرید عمده سالن‌ها</h3><p>شرایط ویژه برای حرفه‌ای‌ها</p></div>
-        <div><h3>فروشنده شوید</h3><p>غرفه خودتان را در SalonMall بسازید</p></div>
-      </section>
+  <section className="brands"><h3>برندهای محبوب</h3><div><b>WAHL</b><b>BaBylissPRO</b><b>Schwarzkopf</b><b>L'ORÉAL</b><b>NISHMAN</b><b>JAGUAR</b><b>andis</b></div></section>
+  <section className="sellerBanner"><div><small>فروشنده حرفه‌ای هستید؟</small><h2>فروشگاه خودت را در SalonMall بساز</h2><p>محصولاتت را روی کاتالوگ مرکزی عرضه کن، سفارش بگیر و فروش را مدیریت کن.</p><button>ثبت‌نام فروشنده</button></div><div className="sellerArt">PRO<br/>SELLER</div></section>
+  <section className="cameraFeature"><Camera size={40}/><div><small>جستجوی تصویری</small><h2>عکس بگیر، محصول را پیدا کن</h2><p>SalonMall تصویر را با کاتالوگ مقایسه می‌کند و همان محصول یا نزدیک‌ترین گزینه‌ها را با فروشندگان مختلف نشان می‌دهد.</p></div><button>جستجو با عکس</button></section>
 
-      <section className="section">
-        <div className="sectionTitle"><h2>پیشنهادهای ویژه</h2><a>مشاهده همه</a></div>
-        <div className="products">
-          {products.map((p,i)=><article className="product" key={p.name}>
-            <div className={"productVisual p"+i}>SM</div>
-            <small>{p.brand}</small><h3>{p.name}</h3>
-            <div className="rating">★ ۴.۸</div><b className="price">{p.price} تومان</b>
-            <button>مقایسه فروشندگان</button>
-          </article>)}
-        </div>
-      </section>
-
-      <section className="compare">
-        <div><small>یک محصول، چند فروشنده</small><h2>قیمت را مقایسه کن؛ بهترین فروشنده را انتخاب کن</h2>
-        <p>SalonMall برای هر کالا یک صفحه مرکزی دارد؛ فروشنده‌ها قیمت، موجودی و شرایط ارسال خودشان را ارائه می‌کنند.</p></div>
-        <div className="sellerList">
-          <div><b>فروشگاه حرفه‌ای تهران</b><span>۴,۸۵۰,۰۰۰ تومان</span></div>
-          <div><b>ابزار سالن</b><span>۴,۹۲۰,۰۰۰ تومان</span></div>
-          <div><b>باربر پرو</b><span>۵,۰۵۰,۰۰۰ تومان</span></div>
-        </div>
-      </section>
-
-      <section className="cameraFeature">
-        <Camera size={44}/><div><small>جستجوی تصویری SalonMall</small><h2>عکس بگیر، محصول را پیدا کن</h2>
-        <p>از محصول عکس بگیر یا تصویرش را آپلود کن؛ سیستم محصول و نزدیک‌ترین نتایج را پیدا می‌کند و قیمت فروشنده‌ها را نشان می‌دهد.</p></div>
-        <button className="primary">جستجو با عکس</button>
-      </section>
-
-      <footer><div className="brand"><span className="mark">S</span><b>Salon<span>Mall</span></b></div>
-      <p>بازار تخصصی محصولات و تجهیزات آرایشگاهی</p></footer>
-    </main>
-  );
+  <footer><div className="brand"><span className="logoS">S</span><div><b>Salon<span>Mall</span></b><small>بازار تخصصی صنعت آرایش و زیبایی</small></div></div></footer>
+  <div className="mobileBottom"><div><Home/><small>خانه</small></div><div><Grid2X2/><small>دسته‌بندی</small></div><div><Heart/><small>علاقه‌مندی</small></div><div><Package/><small>سفارش‌ها</small></div><div><User/><small>پروفایل</small></div></div>
+ </main>
 }
