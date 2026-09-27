@@ -42,6 +42,6 @@ export default function Home(){
   <section className="cameraFeature"><Camera size={40}/><div><small>جستجوی تصویری</small><h2>عکس بگیر، محصول را پیدا کن</h2><p>SalonMall تصویر را با کاتالوگ مقایسه می‌کند و همان محصول یا نزدیک‌ترین گزینه‌ها را با فروشندگان مختلف نشان می‌دهد.</p></div><Link className="visualButton" href="/visual-search">جستجو با عکس</Link></section>
 
   <footer><div className="brand"><span className="logoS">S</span><div><b>Salon<span>Mall</span></b><small>بازار تخصصی صنعت آرایش و زیبایی</small></div></div><div className="developerCredit">طراحی و توسعه: محمد شوری <a href="https://mohamadshori.ir">Mohamadshori.ir</a></div></footer>
-  <div className="mobileBottom"><Link href="/"><Home/><small>خانه</small></Link><Link href="/category/clippers"><Grid2X2/><small>دسته‌بندی</small></Link><div><Heart/><small>علاقه‌مندی</small></div><div><Package/><small>سفارش‌ها</small></div><div><User/><small>پروفایل</small></div></div>
+  <div className="mobileBottom"><Link href="/"><Home/><small>خانه</small></Link><Link href="/category/clippers"><Grid2X2/><small>دسته‌بندی</small></Link><div><Heart/><small>علاقه‌مندی</small></div><Link href="/account/orders"><Package/><small>سفارش‌ها</small></Link><Link href="/login"><User/><small>پروفایل</small></Link></div>
  </main>
 }
