@@ -5,11 +5,10 @@ const categories = [
   ["●","رنگ و دکلره"],["▣","تجهیزات سالن"],["▤","یکبار مصرف"],["▦","مبلمان و دکور"],["▧","تجهیزات جانبی"],["٪","فروش ویژه"]
 ];
 const products = [
-  ["CLIP","Wahl Magic Clip","ماشین اصلاح حرفه‌ای","۴,۸۵۰,۰۰۰","۲۰٪"],
-  ["DRY","BaByliss","سشوار حرفه‌ای","۲,۹۸۰,۰۰۰","۱۵٪"],
-  ["WAX","Professional","واکس مو","۴۹۰,۰۰۰","۱۰٪"],
-  ["✂","Jaguar","قیچی حرفه‌ای","۲,۸۵۰,۰۰۰","۱۸٪"],
-  ["SPRAY","Schwarzkopf","اسپری مو","۵۸۵,۰۰۰","۱۲٪"]
+  ["https://hairwaysdirect.com/cdn/shop/files/Master.png?v=1719314606","اندیس","ماشین اصلاح حرفه‌ای","۴,۸۵۰,۰۰۰","۲۰٪"],
+  ["https://images.prom.ua/5457361709_w1280_h640_5457361709.jpg","جی‌آرال","سشوار حرفه‌ای","۲,۹۸۰,۰۰۰","۱۵٪"],
+  ["https://wedoskin.ca/cdn/shop/files/SACHAJUANHairWax75ml.png?v=1740083846","ساچاوان","واکس موی حرفه‌ای","۴۹۰,۰۰۰","۱۰٪"],
+  ["https://k5-international.eu/cdn/shop/products/TijerasSuperCutSarrated_2.jpg?v=1600243540","کی‌فایو","قیچی حرفه‌ای","۲,۸۵۰,۰۰۰","۱۸٪"]
 ];
 
 export default function Home(){
@@ -33,15 +32,15 @@ export default function Home(){
 
   <section className="categoryStrip">{categories.map(([icon,name])=><div key={name}><span>{icon}</span><b>{name}</b></div>)}</section>
 
-  <section className="promoGrid"><article className="promo p1"><div><h3>ماشین‌های اصلاح</h3><p>دقیق، قدرتمند، حرفه‌ای</p><button>مشاهده برندها</button></div><strong>WAHL</strong></article><article className="promo p2"><div><h3>محصولات مراقبت مو</h3><p>از برندهای معتبر جهانی</p><button>مشاهده محصولات</button></div><strong>PRO</strong></article><article className="promo p3"><div><h3>تجهیزات کامل سالن</h3><p>با کیفیت و ماندگار</p><button>مشاهده تجهیزات</button></div><strong>CHAIR</strong></article></section>
+  <section className="promoGrid"><article className="promo p1"><div><h3>ماشین‌های اصلاح</h3><p>دقیق، قدرتمند، حرفه‌ای</p><button>مشاهده برندها</button></div><strong>ماشین اصلاح</strong></article><article className="promo p2"><div><h3>محصولات مراقبت مو</h3><p>از برندهای معتبر جهانی</p><button>مشاهده محصولات</button></div><strong>مراقبت مو</strong></article><article className="promo p3"><div><h3>تجهیزات کامل سالن</h3><p>با کیفیت و ماندگار</p><button>مشاهده تجهیزات</button></div><strong>تجهیزات سالن</strong></article></section>
 
-  <section className="productsSection"><div className="sectionHead"><h2>پیشنهادهای ویژه</h2><a>مشاهده همه</a></div><div className="productGrid">{products.map(([visual,brand,name,price,off])=><article className="product" key={name}><div className="discount">-{off}</div><Heart className="heart" size={18}/><div className="productImg">{visual}</div><small>{brand}</small><h3>{name}</h3><div className="stars">★★★★★ <span>۴.۸</span></div><b className="price">{price} تومان</b><button className="cartBtn"><ShoppingCart size={17}/></button></article>)}</div></section>
+  <section className="productsSection"><div className="sectionHead"><h2>پیشنهادهای ویژه</h2><a>مشاهده همه</a></div><div className="productGrid">{products.map(([visual,brand,name,price,off])=><article className="product" key={name}><div className="discount">-{off}</div><Heart className="heart" size={18}/><div className="productImg"><img src={visual} alt={name}/></div><small>{brand}</small><h3>{name}</h3><div className="stars">★★★★★ <span>۴.۸</span></div><b className="price">{price} تومان</b><button className="cartBtn"><ShoppingCart size={17}/></button></article>)}</div></section>
 
-  <section className="brands"><h3>برندهای محبوب</h3><div><b>WAHL</b><b>BaBylissPRO</b><b>Schwarzkopf</b><b>L'ORÉAL</b><b>NISHMAN</b><b>JAGUAR</b><b>andis</b></div></section>
-  <section className="sellerBanner"><div><small>فروشنده حرفه‌ای هستید؟</small><h2>فروشگاه خودت را در SalonMall بساز</h2><p>محصولاتت را روی کاتالوگ مرکزی عرضه کن، سفارش بگیر و فروش را مدیریت کن.</p><button>ثبت‌نام فروشنده</button></div><div className="sellerArt">PRO<br/>SELLER</div></section>
+  <section className="brands"><h3>برندهای محبوب</h3><div><b>وال</b><b>بابیلیس پرو</b><b>شوارتسکف</b><b>لورآل</b><b>نیش‌من</b><b>جگوار</b><b>اندیس</b></div></section>
+  <section className="sellerBanner"><div><small>فروشنده حرفه‌ای هستید؟</small><h2>فروشگاه خودت را در SalonMall بساز</h2><p>محصولاتت را روی کاتالوگ مرکزی عرضه کن، سفارش بگیر و فروش را مدیریت کن.</p><button>ثبت‌نام فروشنده</button></div><div className="sellerArt">فروشنده<br/>حرفه‌ای</div></section>
   <section className="cameraFeature"><Camera size={40}/><div><small>جستجوی تصویری</small><h2>عکس بگیر، محصول را پیدا کن</h2><p>SalonMall تصویر را با کاتالوگ مقایسه می‌کند و همان محصول یا نزدیک‌ترین گزینه‌ها را با فروشندگان مختلف نشان می‌دهد.</p></div><button>جستجو با عکس</button></section>
 
-  <footer><div className="brand"><span className="logoS">S</span><div><b>Salon<span>Mall</span></b><small>بازار تخصصی صنعت آرایش و زیبایی</small></div></div></footer>
+  <footer><div className="brand"><span className="logoS">S</span><div><b>Salon<span>Mall</span></b><small>بازار تخصصی صنعت آرایش و زیبایی</small></div></div><div className="developerCredit">طراحی و توسعه: محمد شوری <a href="https://mohamadshori.ir">Mohamadshori.ir</a></div></footer>
   <div className="mobileBottom"><div><Home/><small>خانه</small></div><div><Grid2X2/><small>دسته‌بندی</small></div><div><Heart/><small>علاقه‌مندی</small></div><div><Package/><small>سفارش‌ها</small></div><div><User/><small>پروفایل</small></div></div>
  </main>
 }
