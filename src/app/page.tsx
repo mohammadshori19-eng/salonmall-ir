@@ -1,47 +1,89 @@
 import Link from "next/link";
-import { Camera, Search, ShoppingCart, Menu, User, Heart, Home, Grid2X2, Package, ShieldCheck, Truck, Headphones, BadgeCheck, Store } from "lucide-react";
+import "./home.css";
 
 const categories = [
-  ["▰","ماشین اصلاح","clippers"],["✂","قیچی و ابزار","tools"],["▥","محصولات مو","hair"],["◉","محصولات پوستی","skin"],
-  ["●","رنگ و دکلره","color"],["▣","تجهیزات سالن","equipment"],["▤","یکبار مصرف","disposable"],["▦","مبلمان و دکور","furniture"],["▧","تجهیزات جانبی","accessories"],["٪","فروش ویژه","sale"]
-];
-const products = [
-  ["https://hairwaysdirect.com/cdn/shop/files/Master.png?v=1719314606","اندیس","ماشین اصلاح حرفه‌ای","۴,۸۵۰,۰۰۰","۲۰٪","professional-clipper"],
-  ["https://images.prom.ua/5457361709_w1280_h640_5457361709.jpg","جی‌آرال","سشوار حرفه‌ای","۲,۹۸۰,۰۰۰","۱۵٪","professional-dryer"],
-  ["https://wedoskin.ca/cdn/shop/files/SACHAJUANHairWax75ml.png?v=1740083846","ساچاوان","واکس موی حرفه‌ای","۴۹۰,۰۰۰","۱۰٪","hair-wax"],
-  ["https://k5-international.eu/cdn/shop/products/TijerasSuperCutSarrated_2.jpg?v=1600243540","کی‌فایو","قیچی حرفه‌ای","۲,۸۵۰,۰۰۰","۱۸٪","professional-scissors"]
+  ["https://hairwaysdirect.com/cdn/shop/files/Master.png?v=1719314606","ماشین اصلاح","clippers"],
+  ["https://k5-international.eu/cdn/shop/products/TijerasSuperCutSarrated_2.jpg?v=1600243540","قیچی و ابزار","scissors-tools"],
+  ["https://wedoskin.ca/cdn/shop/files/SACHAJUANHairWax75ml.png?v=1740083846","محصولات مو","hair-products"],
+  ["https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=400&q=80","محصولات پوستی","skin-care"],
+  ["https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=400&q=80","تجهیزات سالن","salon-equipment"],
+  ["https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=400&q=80","مبلمان و دکور","furniture-decor"],
+  ["https://images.unsplash.com/photo-1522338242992-e1a54906a8da?auto=format&fit=crop&w=400&q=80","رنگ و دکلره","hair-color-bleach"],
+  ["https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=400&q=80","عطر و ادکلن","fragrance"],
 ];
 
 export default function Home(){
- return <main>
-  <div className="utility"><Link href="/login">ورود / ثبت‌نام</Link><div><Link href="/seller/register">فروشنده حرفه‌ای هستید؟</Link><Link href="/account/orders">پیگیری سفارش</Link><Link href="/seller/register">فروشنده شوید</Link></div></div>
-  <header className="mainHeader">
-    <button className="mobileMenu"><Menu/></button>
-    <div className="brand"><span className="logoS">S</span><div><b>Salon<span>Mall</span></b><small>مرکز خرید تخصصی لوازم آرایشگاهی</small></div></div>
-    <div className="search"><Search size={20}/><input placeholder="جستجوی محصول، برند یا دسته‌بندی ..."/><Link href="/visual-search" aria-label="جستجو با عکس"><Camera size={20}/></Link></div>
-    <div className="headerLinks"><Link href="/category/clippers"><b>دسته‌بندی‌ها</b></Link><Link href="/cart" aria-label="سبد خرید"><ShoppingCart/></Link><span className="cartCount">۲</span></div>
-  </header>
-  <nav className="nav"><Menu size={18}/><b>همه دسته‌ها</b><span>ماشین اصلاح</span><span>ابزار و قیچی</span><span>محصولات مو</span><span>محصولات پوستی</span><span>رنگ و دکلره</span><span>تجهیزات سالن</span><span>مبلمان و دکور</span><span>یکبار مصرف</span><span className="hot">فروش ویژه</span></nav>
+  return <main className="sm-home">
+    <section className="sm-hero">
+      <div className="sm-top">
+        <div className="sm-bar">
+          <Link href="/cart" className="sm-cart">🛒<span>۲</span></Link>
+          <div className="sm-brand"><i>S</i>Salon<em>Mall</em><small>مرکز تخصصی لوازم آرایشگاهی</small></div>
+          <button className="sm-menu" aria-label="منو">☰</button>
+        </div>
+        <div className="sm-search">
+          <Link href="/category/clippers" className="sm-go">⌕</Link>
+          <span>جستجوی محصول، برند یا دسته‌بندی ...</span>
+          <Link href="/visual-search" className="sm-cam">📷</Link>
+        </div>
+      </div>
 
-  <section className="hero">
-    <div className="heroCopy"><small>کیفیت. اطمینان. حرفه‌ای‌تر</small><h1>همه چیز برای<br/>یک سالن حرفه‌ای</h1><p>از ماشین اصلاح و قیچی حرفه‌ای تا محصولات مراقبتی و تجهیزات کامل سالن؛ در یک بازار تخصصی.</p><Link className="heroButton" href="/category/clippers">مشاهده محصولات ←</Link></div>
-    <div className="heroProducts">
-      <div className="clipperShape"><i></i><b>WAHL</b></div><div className="combShape">|||||||||||</div><div className="bottleShape tall">PRO</div><div className="scissorShape">✂</div><div className="jarShape">MATTE<br/>PASTE</div><div className="sprayShape">NISH<br/>MAN</div>
-    </div>
-    <div className="heroBenefits"><div><BadgeCheck/> اصالت کالا<small>از برندهای معتبر</small></div><div><ShieldCheck/> تضمین قیمت<small>مقایسه با انتخاب بهتر</small></div><div><ShieldCheck/> پرداخت امن<small>درگاه مطمئن</small></div><div><Truck/> ارسال سریع<small>به سراسر ایران</small></div><div><Headphones/> پشتیبانی تخصصی<small>قبل و بعد از خرید</small></div></div>
-  </section>
+      <div className="sm-hero-copy">
+        <div className="sm-kicker">کیفیت حرفه‌ای، انتخاب حرفه‌ای‌تر</div>
+        <h1>همه چیز برای<br/>یک سالن حرفه‌ای</h1>
+        <p>از ماشین اصلاح و قیچی حرفه‌ای تا محصولات مراقبتی و تجهیزات کامل سالن؛ در یک بازار تخصصی.</p>
+        <Link className="sm-cta" href="/category/clippers">مشاهده محصولات ←</Link>
+        <div className="sm-dots"><i></i><i></i><i></i></div>
+      </div>
 
-  <section className="categoryStrip">{categories.map(([icon,name,slug])=><Link className="categoryLink" href={"/category/"+slug} key={name}><span>{icon}</span><b>{name}</b></Link>)}</section>
+      <div className="sm-collage">
+        <img className="sm-pc1" src="https://hairwaysdirect.com/cdn/shop/files/Master.png?v=1719314606" alt="ماشین اصلاح"/>
+        <img className="sm-pc2" src="https://wedoskin.ca/cdn/shop/files/SACHAJUANHairWax75ml.png?v=1740083846" alt="محصول مو"/>
+        <img className="sm-pc3" src="https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&w=400&q=85" alt="محصول آرایشگاهی"/>
+        <div className="sm-scissors">✂️</div>
+      </div>
+    </section>
 
-  <section className="promoGrid"><article className="promo p1"><div><h3>ماشین‌های اصلاح</h3><p>دقیق، قدرتمند، حرفه‌ای</p><button>مشاهده برندها</button></div><strong>ماشین اصلاح</strong></article><article className="promo p2"><div><h3>محصولات مراقبت مو</h3><p>از برندهای معتبر جهانی</p><button>مشاهده محصولات</button></div><strong>مراقبت مو</strong></article><article className="promo p3"><div><h3>تجهیزات کامل سالن</h3><p>با کیفیت و ماندگار</p><button>مشاهده تجهیزات</button></div><strong>تجهیزات سالن</strong></article></section>
+    <section className="sm-trust">
+      <div><b>🚚</b><strong>ارسال سریع</strong><small>به سراسر ایران</small></div>
+      <div><b>♢</b><strong>پرداخت امن</strong><small>درگاه معتبر</small></div>
+      <div><b>٪</b><strong>تضمین قیمت</strong><small>مقایسه انتخاب بهتر</small></div>
+      <div><b>♧</b><strong>پشتیبانی تخصصی</strong><small>قبل و بعد از خرید</small></div>
+    </section>
 
-  <section className="productsSection"><div className="sectionHead"><h2>پیشنهادهای ویژه</h2><a>مشاهده همه</a></div><div className="productGrid">{products.map(([visual,brand,name,price,off,slug])=><article className="product" key={name}><div className="discount">-{off}</div><Heart className="heart" size={18}/><Link href={"/product/"+slug}><div className="productImg"><img src={visual} alt={name}/></div><small>{brand}</small><h3>{name}</h3></Link><div className="stars">★★★★★ <span>۴.۸</span></div><b className="price">{price} تومان</b><Link className="cartBtn" href="/cart"><ShoppingCart size={17}/></Link></article>)}</div></section>
+    <section className="sm-section">
+      <div className="sm-title"><h2>دسته‌بندی محصولات</h2><Link href="/category/clippers">مشاهده همه ←</Link></div>
+      <div className="sm-cats">{categories.map(([img,name,slug])=>
+        <Link href={"/category/"+slug} className="sm-cat" key={slug}>
+          <span><img src={img} alt={name}/></span><b>{name}</b>
+        </Link>)}
+      </div>
+    </section>
 
-  <section className="brands"><h3>برندهای محبوب</h3><div><b>وال</b><b>بابیلیس پرو</b><b>شوارتسکف</b><b>لورآل</b><b>نیش‌من</b><b>جگوار</b><b>اندیس</b></div></section>
-  <section className="sellerBanner"><div><small>فروشنده حرفه‌ای هستید؟</small><h2>فروشگاه خودت را در SalonMall بساز</h2><p>محصولاتت را روی کاتالوگ مرکزی عرضه کن، سفارش بگیر و فروش را مدیریت کن.</p><Link className="sellerButton" href="/seller/register">ثبت‌نام فروشنده</Link></div><div className="sellerArt">فروشنده<br/>حرفه‌ای</div></section>
-  <section className="cameraFeature"><Camera size={40}/><div><small>جستجوی تصویری</small><h2>عکس بگیر، محصول را پیدا کن</h2><p>SalonMall تصویر را با کاتالوگ مقایسه می‌کند و همان محصول یا نزدیک‌ترین گزینه‌ها را با فروشندگان مختلف نشان می‌دهد.</p></div><Link className="visualButton" href="/visual-search">جستجو با عکس</Link></section>
+    <section className="sm-promos">
+      <Link href="/category/salon-equipment" className="sm-promo sm-promo1"><div><h3>تجهیزات کامل سالن</h3><p>با کیفیت و ماندگار</p><span>مشاهده تجهیزات</span></div></Link>
+      <Link href="/category/hair-products" className="sm-promo sm-promo2"><div><h3>محصولات مراقبت مو</h3><p>از برندهای معتبر جهانی</p><span>مشاهده محصولات</span></div></Link>
+    </section>
 
-  <footer><div className="brand"><span className="logoS">S</span><div><b>Salon<span>Mall</span></b><small>بازار تخصصی صنعت آرایش و زیبایی</small></div></div><div className="developerCredit">طراحی و توسعه: محمد شوری <a href="https://mohamadshori.ir">Mohamadshori.ir</a></div></footer>
-  <div className="mobileBottom"><Link href="/"><Home/><small>خانه</small></Link><Link href="/category/clippers"><Grid2X2/><small>دسته‌بندی</small></Link><div><Heart/><small>علاقه‌مندی</small></div><Link href="/account/orders"><Package/><small>سفارش‌ها</small></Link><Link href="/login"><User/><small>پروفایل</small></Link></div>
- </main>
+    <section className="sm-section sm-special">
+      <div className="sm-title"><h2>پیشنهادهای ویژه</h2><Link href="/category/sale">مشاهده همه ←</Link></div>
+      <div className="sm-products">
+        <article className="sm-card"><span className="sm-heart">♡</span><span className="sm-off">-۲۰٪</span><Link href="/product/professional-clipper"><div className="sm-pic"><img src="https://hairwaysdirect.com/cdn/shop/files/Master.png?v=1719314606" alt="ماشین اصلاح"/></div><h3>ماشین اصلاح حرفه‌ای Wahl</h3></Link><small>از چند فروشنده</small><div className="sm-rating">★★★★★ ۴.۸</div><del>۶,۲۰۰,۰۰۰</del><strong>۴,۹۶۰,۰۰۰ تومان</strong></article>
+        <article className="sm-card"><span className="sm-heart">♡</span><span className="sm-off">-۱۵٪</span><Link href="/product/professional-dryer"><div className="sm-pic"><img src="https://images.prom.ua/5457361709_w1280_h640_5457361709.jpg" alt="سشوار"/></div><h3>سشوار حرفه‌ای سالن</h3></Link><small>از چند فروشنده</small><div className="sm-rating">★★★★★ ۴.۷</div><del>۳,۵۰۰,۰۰۰</del><strong>۲,۹۷۵,۰۰۰ تومان</strong></article>
+        <article className="sm-card"><span className="sm-heart">♡</span><span className="sm-off">-۱۲٪</span><Link href="/product/hair-wax"><div className="sm-pic"><img src="https://wedoskin.ca/cdn/shop/files/SACHAJUANHairWax75ml.png?v=1740083846" alt="محصول مو"/></div><h3>محصول حالت‌دهنده حرفه‌ای</h3></Link><small>از چند فروشنده</small><div className="sm-rating">★★★★★ ۴.۷</div><del>۷۹۰,۰۰۰</del><strong>۶۹۵,۰۰۰ تومان</strong></article>
+        <article className="sm-card"><span className="sm-heart">♡</span><span className="sm-off">-۱۸٪</span><Link href="/product/professional-scissors"><div className="sm-pic"><img src="https://k5-international.eu/cdn/shop/products/TijerasSuperCutSarrated_2.jpg?v=1600243540" alt="قیچی"/></div><h3>قیچی حرفه‌ای آرایشگری</h3></Link><small>از چند فروشنده</small><div className="sm-rating">★★★★★ ۴.۹</div><del>۳,۴۵۰,۰۰۰</del><strong>۲,۸۲۹,۰۰۰ تومان</strong></article>
+      </div>
+    </section>
+
+    <section className="sm-seller"><h3>فروشنده حرفه‌ای هستید؟</h3><p>غرفه خودتان را بسازید، محصولات را ثبت کنید و سفارش‌ها را از یک پنل مدیریت کنید.</p><Link className="sm-cta" href="/seller/register">شروع فروش در SalonMall</Link></section>
+    <footer className="sm-credit">طراحی و توسعه: محمد شوری | <a href="https://mohamadshori.ir">Mohamadshori.ir</a></footer>
+
+    <nav className="sm-bottom">
+      <Link className="active" href="/"><i>⌂</i><span>خانه</span></Link>
+      <Link href="/category/sale"><i>٪</i><span>پیشنهادها</span></Link>
+      <Link href="/category/clippers"><i>▦</i><span>دسته‌بندی‌ها</span></Link>
+      <Link href="/account/favorites"><i>♡</i><span>علاقه‌مندی</span></Link>
+      <Link href="/login"><i>♙</i><span>پنل کاربری</span></Link>
+    </nav>
+  </main>
 }
