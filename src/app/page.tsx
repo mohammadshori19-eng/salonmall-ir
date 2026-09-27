@@ -14,17 +14,17 @@ const products = [
 
 export default function Home(){
  return <main>
-  <div className="utility"><span>ورود / ثبت‌نام</span><div><span>فروشنده حرفه‌ای هستید؟</span><span>پیگیری سفارش</span><span>فروشنده شوید</span></div></div>
+  <div className="utility"><Link href="/login">ورود / ثبت‌نام</Link><div><Link href="/seller/register">فروشنده حرفه‌ای هستید؟</Link><Link href="/account/orders">پیگیری سفارش</Link><Link href="/seller/register">فروشنده شوید</Link></div></div>
   <header className="mainHeader">
     <button className="mobileMenu"><Menu/></button>
     <div className="brand"><span className="logoS">S</span><div><b>Salon<span>Mall</span></b><small>مرکز خرید تخصصی لوازم آرایشگاهی</small></div></div>
-    <div className="search"><Search size={20}/><input placeholder="جستجوی محصول، برند یا دسته‌بندی ..."/><button><Camera size={20}/></button></div>
+    <div className="search"><Search size={20}/><input placeholder="جستجوی محصول، برند یا دسته‌بندی ..."/><Link href="/visual-search" aria-label="جستجو با عکس"><Camera size={20}/></Link></div>
     <div className="headerLinks"><Link href="/category/clippers"><b>دسته‌بندی‌ها</b></Link><Link href="/cart" aria-label="سبد خرید"><ShoppingCart/></Link><span className="cartCount">۲</span></div>
   </header>
   <nav className="nav"><Menu size={18}/><b>همه دسته‌ها</b><span>ماشین اصلاح</span><span>ابزار و قیچی</span><span>محصولات مو</span><span>محصولات پوستی</span><span>رنگ و دکلره</span><span>تجهیزات سالن</span><span>مبلمان و دکور</span><span>یکبار مصرف</span><span className="hot">فروش ویژه</span></nav>
 
   <section className="hero">
-    <div className="heroCopy"><small>کیفیت. اطمینان. حرفه‌ای‌تر</small><h1>همه چیز برای<br/>یک سالن حرفه‌ای</h1><p>از ماشین اصلاح و قیچی حرفه‌ای تا محصولات مراقبتی و تجهیزات کامل سالن؛ در یک بازار تخصصی.</p><button>مشاهده محصولات ←</button></div>
+    <div className="heroCopy"><small>کیفیت. اطمینان. حرفه‌ای‌تر</small><h1>همه چیز برای<br/>یک سالن حرفه‌ای</h1><p>از ماشین اصلاح و قیچی حرفه‌ای تا محصولات مراقبتی و تجهیزات کامل سالن؛ در یک بازار تخصصی.</p><Link className="heroButton" href="/category/clippers">مشاهده محصولات ←</Link></div>
     <div className="heroProducts">
       <div className="clipperShape"><i></i><b>WAHL</b></div><div className="combShape">|||||||||||</div><div className="bottleShape tall">PRO</div><div className="scissorShape">✂</div><div className="jarShape">MATTE<br/>PASTE</div><div className="sprayShape">NISH<br/>MAN</div>
     </div>
@@ -38,8 +38,8 @@ export default function Home(){
   <section className="productsSection"><div className="sectionHead"><h2>پیشنهادهای ویژه</h2><a>مشاهده همه</a></div><div className="productGrid">{products.map(([visual,brand,name,price,off,slug])=><article className="product" key={name}><div className="discount">-{off}</div><Heart className="heart" size={18}/><Link href={"/product/"+slug}><div className="productImg"><img src={visual} alt={name}/></div><small>{brand}</small><h3>{name}</h3></Link><div className="stars">★★★★★ <span>۴.۸</span></div><b className="price">{price} تومان</b><Link className="cartBtn" href="/cart"><ShoppingCart size={17}/></Link></article>)}</div></section>
 
   <section className="brands"><h3>برندهای محبوب</h3><div><b>وال</b><b>بابیلیس پرو</b><b>شوارتسکف</b><b>لورآل</b><b>نیش‌من</b><b>جگوار</b><b>اندیس</b></div></section>
-  <section className="sellerBanner"><div><small>فروشنده حرفه‌ای هستید؟</small><h2>فروشگاه خودت را در SalonMall بساز</h2><p>محصولاتت را روی کاتالوگ مرکزی عرضه کن، سفارش بگیر و فروش را مدیریت کن.</p><button>ثبت‌نام فروشنده</button></div><div className="sellerArt">فروشنده<br/>حرفه‌ای</div></section>
-  <section className="cameraFeature"><Camera size={40}/><div><small>جستجوی تصویری</small><h2>عکس بگیر، محصول را پیدا کن</h2><p>SalonMall تصویر را با کاتالوگ مقایسه می‌کند و همان محصول یا نزدیک‌ترین گزینه‌ها را با فروشندگان مختلف نشان می‌دهد.</p></div><button>جستجو با عکس</button></section>
+  <section className="sellerBanner"><div><small>فروشنده حرفه‌ای هستید؟</small><h2>فروشگاه خودت را در SalonMall بساز</h2><p>محصولاتت را روی کاتالوگ مرکزی عرضه کن، سفارش بگیر و فروش را مدیریت کن.</p><Link className="sellerButton" href="/seller/register">ثبت‌نام فروشنده</Link></div><div className="sellerArt">فروشنده<br/>حرفه‌ای</div></section>
+  <section className="cameraFeature"><Camera size={40}/><div><small>جستجوی تصویری</small><h2>عکس بگیر، محصول را پیدا کن</h2><p>SalonMall تصویر را با کاتالوگ مقایسه می‌کند و همان محصول یا نزدیک‌ترین گزینه‌ها را با فروشندگان مختلف نشان می‌دهد.</p></div><Link className="visualButton" href="/visual-search">جستجو با عکس</Link></section>
 
   <footer><div className="brand"><span className="logoS">S</span><div><b>Salon<span>Mall</span></b><small>بازار تخصصی صنعت آرایش و زیبایی</small></div></div><div className="developerCredit">طراحی و توسعه: محمد شوری <a href="https://mohamadshori.ir">Mohamadshori.ir</a></div></footer>
   <div className="mobileBottom"><Link href="/"><Home/><small>خانه</small></Link><Link href="/category/clippers"><Grid2X2/><small>دسته‌بندی</small></Link><div><Heart/><small>علاقه‌مندی</small></div><div><Package/><small>سفارش‌ها</small></div><div><User/><small>پروفایل</small></div></div>
